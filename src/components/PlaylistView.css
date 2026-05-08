@@ -1,0 +1,163 @@
+.playlist-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.playlist-back-btn {
+  background: none;
+  border: none;
+  color: #8ab4f8;
+  cursor: pointer;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 0.9em;
+}
+
+.playlist-back-btn:hover {
+  text-decoration: underline;
+}
+
+.playlist-view-header {
+  padding: 8px 12px;
+}
+
+.playlist-view-title {
+  margin: 0 0 4px;
+  font-size: 1.1em;
+}
+
+.playlist-view-desc {
+  margin: 0;
+  color: #999;
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+.playlist-empty-view {
+  padding: 24px 12px;
+  text-align: center;
+  color: #888;
+}
+
+.playlist-game-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.playlist-game-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.9em;
+  border-left: 3px solid transparent;
+  transition: background 0.15s;
+}
+
+.playlist-game-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.playlist-game-item.now-playing {
+  background: rgba(100, 149, 237, 0.15);
+  border-left-color: #6495ed;
+}
+
+.playlist-game-item.dragging {
+  opacity: 0.4;
+}
+
+.playlist-game-item.drag-over {
+  border-top: 2px solid #6495ed;
+}
+
+.playlist-drag-handle {
+  cursor: grab;
+  color: #666;
+  font-size: 1em;
+  user-select: none;
+}
+
+.playlist-game-number {
+  color: #888;
+  min-width: 24px;
+  text-align: right;
+  font-size: 0.85em;
+}
+
+.playlist-game-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playlist-game-actions {
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.playlist-game-item:hover .playlist-game-actions {
+  opacity: 1;
+}
+
+.playlist-remove-btn,
+.playlist-move-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 2px 4px;
+  font-size: 0.8em;
+  border-radius: 3px;
+}
+
+.playlist-remove-btn:hover {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.15);
+}
+
+.playlist-move-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.playlist-move-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.playlist-view-actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  flex-wrap: wrap;
+}
+
+.playlist-action-btn {
+  padding: 6px 14px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #3a3a3a;
+  color: #ddd;
+  cursor: pointer;
+  font-size: 0.85em;
+}
+
+.playlist-action-btn:hover {
+  background: #4a4a4a;
+}
+
+.playlist-action-btn.primary {
+  background: #2a5db0;
+  border-color: #3a6dc0;
+}
+
+.playlist-action-btn.primary:hover {
+  background: #3a6dc0;
+}

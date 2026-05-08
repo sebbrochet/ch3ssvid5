@@ -1,0 +1,182 @@
+/*
+ * Board themes for Ch3ssVid5.
+ * Each theme is scoped under a data-board-theme attribute on the board container.
+ * All themes use explicit solid-color SVG backgrounds for consistency.
+ */
+
+/* ── Brown theme (override default chessground.brown.css with solid colors) ── */
+[data-board-theme='brown'] cg-board {
+  background-color: #f0d9b5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cg id='a'%3E%3Cg id='b'%3E%3Cg id='c'%3E%3Cg id='d'%3E%3Crect width='1' height='1' fill='%23f0d9b5'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23f0d9b5'/%3E%3Crect y='1' width='1' height='1' fill='%23b58863'/%3E%3Crect x='1' width='1' height='1' fill='%23b58863'/%3E%3C/g%3E%3Cuse x='2' href='%23d'/%3E%3C/g%3E%3Cuse x='4' href='%23c'/%3E%3C/g%3E%3Cuse y='2' href='%23b'/%3E%3C/g%3E%3Cuse y='4' href='%23a'/%3E%3C/svg%3E");
+}
+
+/* ── Blue theme ── */
+[data-board-theme='blue'] cg-board {
+  background-color: #dee3e6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cg id='a'%3E%3Cg id='b'%3E%3Cg id='c'%3E%3Cg id='d'%3E%3Crect width='1' height='1' fill='%23dee3e6'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23dee3e6'/%3E%3Crect y='1' width='1' height='1' fill='%238ca2ad'/%3E%3Crect x='1' width='1' height='1' fill='%238ca2ad'/%3E%3C/g%3E%3Cuse x='2' href='%23d'/%3E%3C/g%3E%3Cuse x='4' href='%23c'/%3E%3C/g%3E%3Cuse y='2' href='%23b'/%3E%3C/g%3E%3Cuse y='4' href='%23a'/%3E%3C/svg%3E");
+}
+
+[data-board-theme='blue'] cg-board square.last-move {
+  background-color: rgba(155, 199, 0, 0.41);
+}
+
+[data-board-theme='blue'] cg-board square.selected {
+  background-color: rgba(20, 85, 30, 0.5);
+}
+
+/* ── Green theme ── */
+[data-board-theme='green'] cg-board {
+  background-color: #ffffdd;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cg id='a'%3E%3Cg id='b'%3E%3Cg id='c'%3E%3Cg id='d'%3E%3Crect width='1' height='1' fill='%23ffffdd'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23ffffdd'/%3E%3Crect y='1' width='1' height='1' fill='%2386a666'/%3E%3Crect x='1' width='1' height='1' fill='%2386a666'/%3E%3C/g%3E%3Cuse x='2' href='%23d'/%3E%3C/g%3E%3Cuse x='4' href='%23c'/%3E%3C/g%3E%3Cuse y='2' href='%23b'/%3E%3C/g%3E%3Cuse y='4' href='%23a'/%3E%3C/svg%3E");
+}
+
+[data-board-theme='green'] cg-board square.last-move {
+  background-color: rgba(155, 199, 0, 0.41);
+}
+
+[data-board-theme='green'] cg-board square.selected {
+  background-color: rgba(20, 85, 30, 0.5);
+}
+
+/* ── Purple theme ── */
+[data-board-theme='purple'] cg-board {
+  background-color: #e8daf0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cg id='a'%3E%3Cg id='b'%3E%3Cg id='c'%3E%3Cg id='d'%3E%3Crect width='1' height='1' fill='%23e8daf0'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23e8daf0'/%3E%3Crect y='1' width='1' height='1' fill='%239070a0'/%3E%3Crect x='1' width='1' height='1' fill='%239070a0'/%3E%3C/g%3E%3Cuse x='2' href='%23d'/%3E%3C/g%3E%3Cuse x='4' href='%23c'/%3E%3C/g%3E%3Cuse y='2' href='%23b'/%3E%3C/g%3E%3Cuse y='4' href='%23a'/%3E%3C/svg%3E");
+}
+
+[data-board-theme='purple'] cg-board square.last-move {
+  background-color: rgba(155, 199, 0, 0.41);
+}
+
+[data-board-theme='purple'] cg-board square.selected {
+  background-color: rgba(20, 85, 30, 0.5);
+}
+
+/* ── IC (grey) theme ── */
+[data-board-theme='ic'] cg-board {
+  background-color: #ececec;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cg id='a'%3E%3Cg id='b'%3E%3Cg id='c'%3E%3Cg id='d'%3E%3Crect width='1' height='1' fill='%23ececec'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23ececec'/%3E%3Crect y='1' width='1' height='1' fill='%23c1c18e'/%3E%3Crect x='1' width='1' height='1' fill='%23c1c18e'/%3E%3C/g%3E%3Cuse x='2' href='%23d'/%3E%3C/g%3E%3Cuse x='4' href='%23c'/%3E%3C/g%3E%3Cuse y='2' href='%23b'/%3E%3C/g%3E%3Cuse y='4' href='%23a'/%3E%3C/svg%3E");
+}
+
+[data-board-theme='ic'] cg-board square.last-move {
+  background-color: rgba(155, 199, 0, 0.41);
+}
+
+[data-board-theme='ic'] cg-board square.selected {
+  background-color: rgba(20, 85, 30, 0.5);
+}
+
+/* ── Coordinate colors per theme (exact Lichess colors) ── */
+/* coord-color-white = color on light squares, coord-color-black = color on dark squares */
+/* Lichess disables text-shadow when per-theme colors are set */
+
+/* Brown: ccw=#f0d9b5 ccb=#946f51 */
+[data-board-theme='brown'] .cg-wrap.orientation-white coords.ranks coord:nth-child(odd),
+[data-board-theme='brown'] .cg-wrap.orientation-white coords.files coord:nth-child(even),
+[data-board-theme='brown'] .cg-wrap.orientation-black coords.ranks coord:nth-child(even),
+[data-board-theme='brown'] .cg-wrap.orientation-black coords.files coord:nth-child(odd) {
+  color: #946f51 !important;
+}
+[data-board-theme='brown'] .cg-wrap.orientation-white coords.ranks coord:nth-child(even),
+[data-board-theme='brown'] .cg-wrap.orientation-white coords.files coord:nth-child(odd),
+[data-board-theme='brown'] .cg-wrap.orientation-black coords.ranks coord:nth-child(odd),
+[data-board-theme='brown'] .cg-wrap.orientation-black coords.files coord:nth-child(even) {
+  color: #f0d9b5 !important;
+}
+[data-board-theme='brown'] .cg-wrap coords {
+  text-shadow: none;
+}
+
+/* Blue: ccw=#dee3e6 ccb=#788a94 */
+[data-board-theme='blue'] .cg-wrap.orientation-white coords.ranks coord:nth-child(odd),
+[data-board-theme='blue'] .cg-wrap.orientation-white coords.files coord:nth-child(even),
+[data-board-theme='blue'] .cg-wrap.orientation-black coords.ranks coord:nth-child(even),
+[data-board-theme='blue'] .cg-wrap.orientation-black coords.files coord:nth-child(odd) {
+  color: #788a94 !important;
+}
+[data-board-theme='blue'] .cg-wrap.orientation-white coords.ranks coord:nth-child(even),
+[data-board-theme='blue'] .cg-wrap.orientation-white coords.files coord:nth-child(odd),
+[data-board-theme='blue'] .cg-wrap.orientation-black coords.ranks coord:nth-child(odd),
+[data-board-theme='blue'] .cg-wrap.orientation-black coords.files coord:nth-child(even) {
+  color: #dee3e6 !important;
+}
+[data-board-theme='blue'] .cg-wrap coords {
+  text-shadow: none;
+}
+
+/* Green: ccw=#ffd ccb=#6d8753 */
+[data-board-theme='green'] .cg-wrap.orientation-white coords.ranks coord:nth-child(odd),
+[data-board-theme='green'] .cg-wrap.orientation-white coords.files coord:nth-child(even),
+[data-board-theme='green'] .cg-wrap.orientation-black coords.ranks coord:nth-child(even),
+[data-board-theme='green'] .cg-wrap.orientation-black coords.files coord:nth-child(odd) {
+  color: #6d8753 !important;
+}
+[data-board-theme='green'] .cg-wrap.orientation-white coords.ranks coord:nth-child(even),
+[data-board-theme='green'] .cg-wrap.orientation-white coords.files coord:nth-child(odd),
+[data-board-theme='green'] .cg-wrap.orientation-black coords.ranks coord:nth-child(odd),
+[data-board-theme='green'] .cg-wrap.orientation-black coords.files coord:nth-child(even) {
+  color: #ffffdd !important;
+}
+[data-board-theme='green'] .cg-wrap coords {
+  text-shadow: none;
+}
+
+/* Purple: uses default white + text-shadow (no Lichess equivalent) */
+[data-board-theme='purple'] .cg-wrap.orientation-white coords.ranks coord:nth-child(odd),
+[data-board-theme='purple'] .cg-wrap.orientation-white coords.files coord:nth-child(even),
+[data-board-theme='purple'] .cg-wrap.orientation-black coords.ranks coord:nth-child(even),
+[data-board-theme='purple'] .cg-wrap.orientation-black coords.files coord:nth-child(odd) {
+  color: #7a5a8a !important;
+}
+[data-board-theme='purple'] .cg-wrap.orientation-white coords.ranks coord:nth-child(even),
+[data-board-theme='purple'] .cg-wrap.orientation-white coords.files coord:nth-child(odd),
+[data-board-theme='purple'] .cg-wrap.orientation-black coords.ranks coord:nth-child(odd),
+[data-board-theme='purple'] .cg-wrap.orientation-black coords.files coord:nth-child(even) {
+  color: #e8daf0 !important;
+}
+[data-board-theme='purple'] .cg-wrap coords {
+  text-shadow: none;
+}
+
+/* IC/Grey: uses default white + text-shadow (no Lichess equivalent) */
+[data-board-theme='ic'] .cg-wrap.orientation-white coords.ranks coord:nth-child(odd),
+[data-board-theme='ic'] .cg-wrap.orientation-white coords.files coord:nth-child(even),
+[data-board-theme='ic'] .cg-wrap.orientation-black coords.ranks coord:nth-child(even),
+[data-board-theme='ic'] .cg-wrap.orientation-black coords.files coord:nth-child(odd) {
+  color: #a0a070 !important;
+}
+[data-board-theme='ic'] .cg-wrap.orientation-white coords.ranks coord:nth-child(even),
+[data-board-theme='ic'] .cg-wrap.orientation-white coords.files coord:nth-child(odd),
+[data-board-theme='ic'] .cg-wrap.orientation-black coords.ranks coord:nth-child(odd),
+[data-board-theme='ic'] .cg-wrap.orientation-black coords.files coord:nth-child(even) {
+  color: #ececec !important;
+}
+[data-board-theme='ic'] .cg-wrap coords {
+  text-shadow: none;
+}
+
+/* ── Theme swatch preview colors (used by the theme picker) ── */
+.theme-swatch {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.theme-swatch:hover {
+  border-color: #888;
+}
+
+.theme-swatch.active {
+  border-color: #4a9eff;
+}
+
+.theme-swatch-light,
+.theme-swatch-dark {
+  width: 50%;
+  height: 100%;
+}

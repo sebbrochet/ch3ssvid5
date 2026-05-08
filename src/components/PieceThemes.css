@@ -1,0 +1,30 @@
+/*
+ * Piece themes for Ch3ssVid5.
+ * Piece images are set dynamically via inline styles in ChessBoardPanel
+ * to handle Vite base URL correctly in production.
+ * This file only contains the swatch styles for the theme picker.
+ */
+
+/* ── Piece theme swatch (used by picker) ── */
+.piece-swatch {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.15s;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #555;
+}
+
+.piece-swatch:hover {
+  border-color: #888;
+}
+
+.piece-swatch.active {
+  border-color: #4a9eff;
+}

@@ -1,0 +1,140 @@
+.nav-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+}
+
+.nav-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-controls button {
+  background: #2d2d2d;
+  border: 1px solid #444;
+  color: #999;
+  font-size: 18px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-controls button:hover:not(:disabled) {
+  background: #444;
+  color: #ddd;
+}
+
+.nav-controls button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.nav-controls button svg {
+  display: block;
+}
+
+.play-pause-btn {
+  padding: 6px 12px !important;
+}
+
+.flip-btn {
+  margin-left: 4px;
+}
+
+.sync-row {
+  gap: 8px;
+}
+
+.sync-toggle {
+  font-size: 13px !important;
+  padding: 4px 12px !important;
+}
+
+.sync-toggle.synced {
+  background: #2a4a2a !important;
+  border-color: #4a8a4a !important;
+}
+
+.sync-toggle.unsynced {
+  background: #4a3a2a !important;
+  border-color: #8a6a3a !important;
+}
+
+.capture-btn {
+  font-size: 13px !important;
+  padding: 4px 12px !important;
+  background: #2a3a5a !important;
+  border-color: #4a6a9a !important;
+}
+
+.capture-btn:hover:not(:disabled) {
+  background: #3a4a6a !important;
+}
+
+.timestamp-display {
+  color: #aaa;
+  font-size: 13px;
+  font-family: 'Consolas', monospace;
+  padding: 4px 8px;
+  background: #1a1a1a;
+  border-radius: 3px;
+}
+
+.undo-btn {
+  font-size: 13px !important;
+  padding: 4px 10px !important;
+  background: #3a2a2a !important;
+  border-color: #8a4a4a !important;
+  color: #daa !important;
+}
+
+.undo-btn:hover {
+  background: #4a3a3a !important;
+}
+
+.engine-row {
+  gap: 8px;
+}
+
+.engine-toggle {
+  font-size: 13px !important;
+  padding: 4px 12px !important;
+}
+
+.engine-toggle.off {
+  background: #2d2d2d !important;
+  border-color: #444 !important;
+  color: #888 !important;
+}
+
+.engine-toggle.on {
+  background: #2a2a4a !important;
+  border-color: #4a4a8a !important;
+  color: #aac !important;
+}
+
+.engine-info {
+  font-size: 11px;
+  color: #888;
+  font-family: 'Consolas', monospace;
+}
+
+.engine-overwrite {
+  font-size: 11px;
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}

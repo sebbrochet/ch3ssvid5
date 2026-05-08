@@ -1,0 +1,139 @@
+.move-overlay {
+  position: absolute;
+  width: 12.5%;
+  height: 12.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.move-san {
+  font-size: clamp(16px, 4.5cqi, 32px);
+  font-weight: 900;
+  font-family: sans-serif;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  animation: sanFlash 1.3s ease-out forwards;
+  position: relative;
+  z-index: 1;
+}
+
+.move-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  animation: squarePulse 1s ease-out forwards;
+}
+
+/* ── Animation keyframes ── */
+@keyframes sanFlash {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  8% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  15% {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+  60% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes squarePulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ── Reverse animation (backward navigation) ── */
+.move-overlay.reverse .move-san {
+  animation: sanFlashReverse 1s ease-out forwards;
+}
+
+@keyframes sanFlashReverse {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  8% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+  15% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  60% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+/* ── Color scheme by move type ── */
+
+/* SAN text */
+.move-san.quiet {
+  color: #fff;
+  -webkit-text-stroke: 0.8px rgba(0, 0, 0, 0.7);
+}
+.move-san.capture {
+  color: #ff5050;
+  -webkit-text-stroke: 0.8px rgba(0, 0, 0, 0.7);
+}
+.move-san.check {
+  color: #ffb432;
+  -webkit-text-stroke: 0.8px rgba(0, 0, 0, 0.7);
+}
+.move-san.checkmate {
+  color: #ffd700;
+  -webkit-text-stroke: 0.8px rgba(0, 0, 0, 0.7);
+}
+.move-san.castling {
+  color: #64b4ff;
+  -webkit-text-stroke: 0.8px rgba(0, 0, 0, 0.7);
+}
+
+/* Square pulse */
+.move-pulse.quiet {
+  background: rgba(255, 255, 255, 0.15);
+}
+.move-pulse.capture {
+  background: rgba(255, 50, 50, 0.2);
+}
+.move-pulse.check {
+  background: rgba(255, 150, 0, 0.2);
+}
+.move-pulse.checkmate {
+  background: rgba(255, 215, 0, 0.25);
+}
+.move-pulse.castling {
+  background: rgba(80, 150, 255, 0.15);
+}
+
+/* ── Hide in landscape mobile (board too small) ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .move-overlay {
+    display: none;
+  }
+}

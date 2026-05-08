@@ -1,0 +1,138 @@
+.playlist-section {
+  border-top: 1px solid var(--border-color, #444);
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+.playlist-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+}
+
+.playlist-section-title {
+  font-size: 0.85em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #999;
+}
+
+.playlist-add-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 1.1em;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.playlist-add-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.playlist-create-form {
+  display: flex;
+  gap: 4px;
+  padding: 4px 8px;
+  align-items: center;
+}
+
+.playlist-create-form input {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #2a2a2a;
+  color: #ddd;
+  font-size: 0.85em;
+  box-sizing: border-box;
+}
+
+.playlist-create-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.playlist-create-form button {
+  padding: 4px 10px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #3a3a3a;
+  color: #ddd;
+  cursor: pointer;
+  font-size: 0.85em;
+}
+
+.playlist-create-form button:hover:not(:disabled) {
+  background: #4a4a4a;
+}
+
+.playlist-create-form button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.playlist-cancel-btn {
+  background: none !important;
+  border-color: transparent !important;
+  color: #999 !important;
+}
+
+.playlist-cancel-btn:hover {
+  color: #ddd !important;
+}
+
+.playlist-empty {
+  padding: 8px 12px;
+  color: #777;
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+.playlist-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.playlist-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.playlist-item.active {
+  background: rgba(100, 149, 237, 0.2);
+}
+
+.playlist-icon {
+  font-size: 0.9em;
+}
+
+.playlist-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playlist-count {
+  color: #888;
+  font-size: 0.85em;
+}
+
+.playlist-rename-input {
+  flex: 1;
+  padding: 2px 6px;
+  border: 1px solid #666;
+  border-radius: 3px;
+  background: #2a2a2a;
+  color: #ddd;
+  font-size: 0.9em;
+}

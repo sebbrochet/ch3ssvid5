@@ -1,0 +1,303 @@
+@import 'chessground/assets/chessground.base.css';
+@import 'chessground/assets/chessground.brown.css';
+@import 'chessground/assets/chessground.cburnett.css';
+@import './BoardThemes.css';
+
+/* ── Lichess-style coordinates inside the board ── */
+.cg-wrap coords {
+  font-size: clamp(8px, 2.4cqi, 12px);
+  font-weight: bold;
+  font-family: 'Noto Sans', sans-serif;
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Ranks: right column, number in top-right of each row */
+.cg-wrap coords.ranks {
+  right: 0;
+  left: auto;
+  top: 0;
+  width: 12.5%;
+  height: 100%;
+}
+
+.cg-wrap coords.ranks coord {
+  transform: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 2px 3px 0 0;
+}
+
+/* Files: bottom row, letter in bottom-left of each column */
+.cg-wrap coords.files {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 12.5%;
+}
+
+.cg-wrap coords.files coord {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0 0 2px 3px;
+  text-transform: lowercase;
+}
+
+.board-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.player-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: min(100%, 80vh);
+  padding: 4px 8px;
+  font-size: 13px;
+  color: #ddd;
+  background: #1a1a1a;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.player-bar.top {
+  margin-bottom: 2px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.player-bar.bottom {
+  margin-top: 2px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.player-result {
+  font-weight: 700;
+  color: #aaa;
+  min-width: 22px;
+  text-align: center;
+}
+
+.player-team {
+  color: #888;
+  font-size: 11px;
+  font-style: italic;
+}
+
+.player-name {
+  font-weight: 600;
+  flex: 1;
+}
+
+.player-elo {
+  color: #999;
+  font-size: 12px;
+}
+
+.board-row {
+  display: flex;
+  align-items: stretch;
+  width: min(100%, 80vh);
+}
+
+.board-container-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.board-container {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+/* Eval bar */
+.eval-bar {
+  width: 16px;
+  flex-shrink: 0;
+  background: #333;
+  border-radius: 3px 0 0 3px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.eval-bar.flipped {
+  background: #e8e8e8;
+}
+
+.eval-bar-fill {
+  background: #e8e8e8;
+  transition: height 0.3s ease;
+  width: 100%;
+}
+
+.eval-bar.flipped .eval-bar-fill {
+  background: #333;
+}
+
+.eval-bar-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  font-size: 9px;
+  font-family: 'Consolas', monospace;
+  color: #888;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Ensure chessground fills its container */
+.board-container cg-board {
+  background-color: #8ca2ad; /* fallback */
+}
+
+/* Tap-to-pause overlay (mobile) */
+.board-play-pause-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+  animation: playPauseFade 600ms ease-out forwards;
+}
+
+.board-play-pause-icon {
+  font-size: 56px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+@keyframes playPauseFade {
+  0% {
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Promotion picker overlay */
+.promotion-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.promotion-picker {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: calc(var(--promo-file) * 12.5%);
+  width: 12.5%;
+  z-index: 101;
+}
+
+.promotion-picker.white {
+  top: 0;
+}
+
+.promotion-picker.black {
+  bottom: 0;
+}
+
+.promotion-picker.white.flipped {
+  top: auto;
+  bottom: 0;
+}
+
+.promotion-picker.black.flipped {
+  bottom: auto;
+  top: 0;
+}
+
+.promotion-piece {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(20px, 4vw, 40px);
+  background: #f0d9b5;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: background 0.15s;
+}
+
+.promotion-piece:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.promotion-piece:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.promotion-piece:hover {
+  background: #e8c97a;
+}
+
+@media (max-width: 768px) {
+  .board-row {
+    width: 100%;
+  }
+
+  .board-panel {
+    padding: 0;
+  }
+
+  .player-bar {
+    font-size: 10px;
+    padding: 1px 6px;
+  }
+
+  /* Hide chessground coordinate labels on mobile */
+  .cg-wrap coords {
+    display: none !important;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .player-bar {
+    font-size: 9px;
+    padding: 0 4px;
+    min-height: 16px;
+  }
+
+  .board-row {
+    /* Account for header(40px) + nav(40px) + 2 player bars(~36px) */
+    width: min(100%, calc(100vh - 120px));
+  }
+
+  /* Hide coordinates in landscape mobile too */
+  .cg-wrap coords {
+    display: none !important;
+  }
+}

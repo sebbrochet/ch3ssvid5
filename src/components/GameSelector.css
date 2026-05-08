@@ -1,0 +1,80 @@
+.game-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: #1a1a1a;
+  border-bottom: 1px solid #2a2a2a;
+  flex-shrink: 0;
+}
+
+.game-selector-label {
+  font-size: 11px;
+  color: #888;
+  white-space: nowrap;
+}
+
+.game-selector select {
+  flex: 1;
+  background: #111;
+  border: 1px solid #444;
+  color: #ddd;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.game-selector select:focus {
+  border-color: #4a6fa5;
+  outline: none;
+}
+
+.add-game-btn {
+  background: #2a3a2a;
+  border: 1px solid #4a7a4a;
+  color: #aad4aa;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.add-game-btn:hover {
+  background: #3a4a3a;
+}
+
+.edit-game-btn {
+  background: none;
+  border: 1px solid #444;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.edit-game-btn:hover {
+  background: #333;
+}
+
+.delete-game-btn {
+  background: none;
+  border: 1px solid #444;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.delete-game-btn:hover {
+  background: #3a2020;
+  border-color: #884444;
+}

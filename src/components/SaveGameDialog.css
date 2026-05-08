@@ -1,0 +1,254 @@
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.dialog {
+  background: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 20px;
+  min-width: 380px;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.dialog h3 {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ddd;
+}
+
+.dialog-hint {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.dialog-field {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dialog-field label {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dialog-checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  text-transform: none;
+}
+
+.dialog-checkbox input[type='checkbox'] {
+  width: auto;
+  margin: 0;
+}
+
+.dialog-field input,
+.dialog-field select {
+  background: #111;
+  border: 1px solid #444;
+  color: #ddd;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.dialog-field input:focus,
+.dialog-field select:focus {
+  border-color: #4a6fa5;
+  outline: none;
+}
+
+.dialog-field select {
+  cursor: pointer;
+}
+
+.new-folder-toggle {
+  background: none;
+  border: none;
+  color: #4a6fa5;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: left;
+}
+
+.new-folder-toggle:hover {
+  color: #6a8fc5;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Inline field rows (e.g., player + elo) */
+.dialog-field.dialog-field-inline {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.dialog-field-grow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dialog-field-small {
+  width: 70px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dialog-field-elo {
+  width: 70px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dialog-field-elo input,
+.dialog-field-small input {
+  width: 100%;
+}
+
+/* Hide number input spinners */
+.dialog-field-elo input[type='number']::-webkit-inner-spin-button,
+.dialog-field-elo input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.dialog-field-elo input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* Read-only info row */
+.dialog-field-readonly {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: #aaa;
+  padding: 4px 0;
+}
+
+/* Tab bar */
+.dialog-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #444;
+}
+
+.dialog-tab {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+}
+
+.dialog-tab:hover {
+  color: #ccc;
+}
+
+.dialog-tab.active {
+  color: #4a9eff;
+  border-bottom-color: #4a9eff;
+}
+
+.dialog-tab-content {
+  min-height: 200px;
+}
+
+/* Wider dialog for edit form */
+.dialog-wide {
+  max-width: 520px;
+}
+
+.dialog-cancel {
+  background: #2d2d2d;
+  border: 1px solid #444;
+  color: #ddd;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.dialog-cancel:hover {
+  background: #3d3d3d;
+}
+
+.dialog-submit {
+  background: #4a6fa5;
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dialog-submit:hover {
+  background: #5a7fb5;
+}
+
+.dialog-submit:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.import-url-display {
+  font-size: 12px;
+  color: #aaa;
+  background: #111;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  word-break: break-all;
+  font-family: 'Consolas', monospace;
+}
+
+.import-url-error {
+  color: #e04040;
+  font-size: 13px;
+  padding: 8px 10px;
+  background: #2a1515;
+  border: 1px solid #4a2020;
+  border-radius: 4px;
+}

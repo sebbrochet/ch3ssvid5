@@ -1,0 +1,38 @@
+.square-labels-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.square-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(12px, 4cqi, 32px);
+  font-weight: 900;
+  font-family: sans-serif;
+  text-transform: lowercase;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Dark squares: light text */
+.square-label.dark-sq {
+  color: #fff;
+}
+
+/* Light squares: dark text */
+.square-label.light-sq {
+  color: #000;
+}
+
+/* Hide in landscape — board too small for readable labels */
+@media (max-height: 500px) and (orientation: landscape) {
+  .square-labels-overlay {
+    display: none;
+  }
+}

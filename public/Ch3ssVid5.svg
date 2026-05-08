@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Dark rounded background -->
+  <rect width="512" height="512" rx="80" fill="#1a1a2e"/>
+
+  <!-- Subtle chessboard pattern in bottom-right corner (decorative) -->
+  <g opacity="0.08">
+    <rect x="256" y="256" width="64" height="64" fill="#fff"/>
+    <rect x="384" y="256" width="64" height="64" fill="#fff"/>
+    <rect x="320" y="320" width="64" height="64" fill="#fff"/>
+    <rect x="448" y="320" width="64" height="64" fill="#fff"/>
+    <rect x="256" y="384" width="64" height="64" fill="#fff"/>
+    <rect x="384" y="384" width="64" height="64" fill="#fff"/>
+    <rect x="320" y="448" width="64" height="64" fill="#fff"/>
+    <rect x="448" y="448" width="64" height="64" fill="#fff"/>
+  </g>
+
+  <!-- Knight silhouette (CBurnett-derived, centered, large) -->
+  <g transform="translate(100, 60) scale(8.5)" fill="none" stroke="#e0e0e0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Body -->
+    <path d="M 22,10 C 32.5,11 38.5,18 38,39 L 15,39 C 15,30 25,32.5 23,18" fill="#e0e0e0"/>
+    <!-- Head -->
+    <path d="M 24,18 C 24.38,20.91 18.45,25.37 16,27 C 13,29 13.18,31.34 11,31 C 9.958,30.06 12.41,27.96 11,28 C 10,28 11.19,29.23 10,30 C 9,30 5.997,31 6,26 C 6,24 12,14 12,14 C 12,14 13.89,12.1 14,10.5 C 13.27,9.506 13.5,8.5 13.5,7.5 C 14.5,6.5 16.5,10 16.5,10 L 18.5,10 C 18.5,10 19.28,8.008 21,7 C 22,7 22,10 22,10" fill="#e0e0e0"/>
+    <!-- Eye -->
+    <circle cx="9" cy="25.5" r="0.5" fill="#1a1a2e" stroke="none"/>
+  </g>
+
+  <!-- Play button circle (green accent, overlapping bottom-right of knight) -->
+  <circle cx="370" cy="350" r="80" fill="#27ae60"/>
+  <polygon points="345,305 345,395 420,350" fill="#1a1a2e"/>
+
+  <!-- Sync arc hint (thin, subtle) -->
+  <path d="M310,280 C340,260 370,270 370,270" stroke="#27ae60" stroke-width="3" fill="none" opacity="0.5" stroke-linecap="round"/>
+</svg>

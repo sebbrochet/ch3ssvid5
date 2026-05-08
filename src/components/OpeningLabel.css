@@ -1,0 +1,22 @@
+.opening-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 12px;
+  font-size: 0.85em;
+  color: #999;
+  overflow: hidden;
+  white-space: nowrap;
+  min-height: 22px;
+}
+
+.opening-eco {
+  color: #8ab4f8;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.opening-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
