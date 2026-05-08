@@ -31,7 +31,7 @@
     "idb-keyval": "^6.2.2",
     "peerjs": "^1.5.5",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react-dom": "^19.2.6",
     "react-i18next": "^17.0.6",
     "stockfish": "^18.0.7"
   },
@@ -42,7 +42,7 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react-dom": "^19.2.3",
     "@types/youtube": "^0.2.0",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^10.2.1",
