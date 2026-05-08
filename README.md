@@ -166,26 +166,19 @@ Output in `dist/`.
 
 ### Preview Production Build
 
-Preview locally exactly as it will appear on GitHub Pages:
+Preview locally exactly as it will appear in production:
 
 ```bash
 npm run build && npm run preview
 ```
 
-Open [http://localhost:4173/ch3ssvid5/](http://localhost:4173/ch3ssvid5/)
-
-|             | Dev (`npm run dev`)    | Preview (`npm run preview`)          |
-| ----------- | ---------------------- | ------------------------------------ |
-| URL         | `localhost:5173/`      | `localhost:4173/ch3ssvid5/`          |
-| Hot reload  | ✓ Live updates on save | ✗ Must rebuild                       |
-| Source maps | ✓ Full, unminified     | ✗ Minified bundle                    |
-| Base path   | `/`                    | `/ch3ssvid5/` (matches GitHub Pages) |
+Open [http://localhost:4173/](http://localhost:4173/)
 
 ## Deployment
 
 The app auto-deploys to GitHub Pages on push to `main` via GitHub Actions.
 
-Live at: [https://sebbrochet.github.io/ch3ssvid5/](https://sebbrochet.github.io/ch3ssvid5/)
+Live at: [https://ch3ssvid5.sebbrochet.com](https://ch3ssvid5.sebbrochet.com)
 
 ## PGN Format
 
