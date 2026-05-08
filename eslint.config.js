@@ -32,7 +32,10 @@ export default tseslint.config(
   {
     files: ['e2e/**/*.ts'],
     rules: {
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_|^page$', varsIgnorePattern: '^__dirname$' }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_|^page$', varsIgnorePattern: '^__dirname$' },
+      ],
     },
   },
   // Build scripts: console output is expected
