@@ -2,6 +2,8 @@ const ALLOWED_DOMAINS = [
   'raw.githubusercontent.com',
   'gist.githubusercontent.com',
   'sebbrochet.github.io',
+  'ch3ssvid5.sebbrochet.com',
+  'ch3ssvid5hub.sebbrochet.com',
   'localhost',
 ];
 
