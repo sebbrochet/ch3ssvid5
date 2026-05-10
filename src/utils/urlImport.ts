@@ -95,7 +95,7 @@ export function deriveGameName(url: string): string {
     const parsed = new URL(url);
     const segments = parsed.pathname.split('/').filter(Boolean);
     const last = segments[segments.length - 1] || 'Imported Game';
-    return last.replace(/\.pgn$/i, '');
+    return decodeURIComponent(last.replace(/\.pgn$/i, ''));
   } catch {
     return 'Imported Game';
   }

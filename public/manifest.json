@@ -2,7 +2,7 @@
   "name": "Ch3ssVid5",
   "short_name": "Ch3ssVid5",
   "description": "Sync chess games with YouTube video commentary",
-  "start_url": "/Ch3ssVid5/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a2e",
   "theme_color": "#1a1a2e",
