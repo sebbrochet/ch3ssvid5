@@ -35,3 +35,7 @@ yarn-error.log*
 # Playwright
 test-results/
 playwright-report/
+
+# Coverage
+coverage/
+coverage-output.txt
