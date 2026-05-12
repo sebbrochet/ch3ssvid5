@@ -207,6 +207,18 @@ describe('useGameLibrary', () => {
     expect(result.current.getGamesInFolder('/openings')).toHaveLength(1);
   });
 
+  it('getGamesInFolder returns games sorted alphabetically by name', async () => {
+    const { result } = await renderLibrary();
+    act(() => {
+      result.current.createGame('Sicilian Defense', '1. e4 c5 *', { folder: '/' });
+      result.current.createGame('French Defense', '1. e4 e6 *', { folder: '/' });
+      result.current.createGame('Caro-Kann', '1. e4 c6 *', { folder: '/' });
+      result.current.createGame('Italian Game', '1. e4 e5 2. Nf3 Nc6 3. Bc4 *', { folder: '/' });
+    });
+    const names = result.current.getGamesInFolder('/').map((g) => g.name);
+    expect(names).toEqual(['Caro-Kann', 'French Defense', 'Italian Game', 'Sicilian Defense']);
+  });
+
   it('getSubfolders returns immediate subfolders', async () => {
     const { result } = await renderLibrary();
     act(() => {
@@ -218,6 +230,17 @@ describe('useGameLibrary', () => {
     expect(result.current.getSubfolders('/')).toEqual(expect.arrayContaining(['/a', '/x']));
     expect(result.current.getSubfolders('/a')).toEqual(['/a/b']);
     expect(result.current.getSubfolders('/a/b')).toEqual(['/a/b/c']);
+  });
+
+  it('getSubfolders returns subfolders sorted alphabetically', async () => {
+    const { result } = await renderLibrary();
+    act(() => {
+      result.current.createFolder('/sicilian');
+      result.current.createFolder('/french');
+      result.current.createFolder('/caro-kann');
+      result.current.createFolder('/italian');
+    });
+    expect(result.current.getSubfolders('/')).toEqual(['/caro-kann', '/french', '/italian', '/sicilian']);
   });
 
   // --- Persistence ---
@@ -282,19 +305,25 @@ describe('useGameLibrary', () => {
   });
 
   it('handles malformed import JSON gracefully', async () => {
+    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
     const { result } = await renderLibrary();
     act(() => {
       result.current.importLibrary('not valid json');
     });
     expect(result.current.games).toHaveLength(0);
+    expect(spy).toHaveBeenCalledOnce();
+    spy.mockRestore();
   });
 
   it('handles non-array import JSON gracefully', async () => {
+    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
     const { result } = await renderLibrary();
     act(() => {
       result.current.importLibrary('{"not": "an array"}');
     });
     expect(result.current.games).toHaveLength(0);
+    expect(spy).toHaveBeenCalledOnce();
+    spy.mockRestore();
   });
 
   // --- Clone (simulating App.tsx handleCloneGame) ---

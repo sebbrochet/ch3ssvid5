@@ -91,4 +91,87 @@ test.describe('Library Folders', () => {
     // App should still be on welcome screen, not crashed
     await expect(app.welcomeHeading).toBeVisible();
   });
+
+  test('drag game into folder', async ({ page }) => {
+    // Create a game and a folder
+    await app.createNewGame('Drag Me');
+    await app.waitForBoard();
+    await app.openLibrary();
+    await page.locator('.library-actions button').first().click();
+    const folderInput = page.locator('.new-folder-row input');
+    await folderInput.fill('Target');
+    await folderInput.press('Enter');
+    await expect(page.locator('.library-folder .folder-name:text("Target")')).toBeVisible();
+
+    // Drag game onto folder
+    const game = page.locator('.library-game .game-name:text("Drag Me")');
+    const folder = page.locator('.library-folder .folder-name:text("Target")').locator('..');
+    await game.dragTo(folder);
+
+    // Game should no longer be visible at root
+    await expect(page.locator('.library-game .game-name:text("Drag Me")')).not.toBeVisible();
+
+    // Navigate into folder — game should be there
+    await page.locator('.library-folder .folder-name:text("Target")').click();
+    await expect(page.locator('.library-game .game-name:text("Drag Me")')).toBeVisible();
+  });
+
+  test('drag folder into another folder', async ({ page }) => {
+    await app.openLibrary();
+
+    // Create two folders
+    await page.locator('.library-actions button').first().click();
+    const folderInput = page.locator('.new-folder-row input');
+    await folderInput.fill('Parent');
+    await folderInput.press('Enter');
+    await expect(page.locator('.library-folder .folder-name:text("Parent")')).toBeVisible();
+
+    await page.locator('.library-actions button').first().click();
+    const folderInput2 = page.locator('.new-folder-row input');
+    await folderInput2.fill('Child');
+    await folderInput2.press('Enter');
+    await expect(page.locator('.library-folder .folder-name:text("Child")')).toBeVisible();
+
+    // Drag Child onto Parent
+    const child = page.locator('.library-folder:has(.folder-name:text("Child"))');
+    const parent = page.locator('.library-folder:has(.folder-name:text("Parent"))');
+    await child.dragTo(parent);
+
+    // Child should no longer be visible at root
+    await expect(page.locator('.library-folder .folder-name:text("Child")')).not.toBeVisible();
+
+    // Navigate into Parent — Child should be there
+    await page.locator('.library-folder .folder-name:text("Parent")').click();
+    await expect(page.locator('.library-folder .folder-name:text("Child")')).toBeVisible();
+  });
+
+  test('drag folder to parent via breadcrumb', async ({ page }) => {
+    await app.openLibrary();
+
+    // Create nested structure: Parent/Child
+    await page.locator('.library-actions button').first().click();
+    const folderInput = page.locator('.new-folder-row input');
+    await folderInput.fill('Parent');
+    await folderInput.press('Enter');
+
+    // Navigate into Parent and create Child
+    await page.locator('.library-folder .folder-name:text("Parent")').click();
+    await page.locator('.library-actions button').first().click();
+    const folderInput2 = page.locator('.new-folder-row input');
+    await folderInput2.fill('Child');
+    await folderInput2.press('Enter');
+    await expect(page.locator('.library-folder .folder-name:text("Child")')).toBeVisible();
+
+    // Drag Child onto root breadcrumb to move it to root
+    const child = page.locator('.library-folder:has(.folder-name:text("Child"))');
+    const rootBreadcrumb = page.locator('.breadcrumb-item:text("All")');
+    await child.dragTo(rootBreadcrumb);
+
+    // Navigate back to root
+    await rootBreadcrumb.click();
+
+    // Child should now be at root level alongside Parent
+    await expect(page.locator('.library-folder .folder-name:text("Child")')).toBeVisible();
+    await expect(page.locator('.library-folder .folder-name:text("Parent")')).toBeVisible();
+  });
 });

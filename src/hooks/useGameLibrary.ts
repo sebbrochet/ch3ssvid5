@@ -170,7 +170,7 @@ export function useGameLibrary() {
   /** Get games in a specific folder (not recursive) */
   const getGamesInFolder = useCallback(
     (folder: string): StoredGame[] => {
-      return games.filter((g) => g.folder === folder).sort((a, b) => b.updatedAt - a.updatedAt);
+      return games.filter((g) => g.folder === folder).sort((a, b) => a.name.localeCompare(b.name));
     },
     [games],
   );

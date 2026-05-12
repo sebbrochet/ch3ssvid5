@@ -115,6 +115,11 @@ export function GameLibrary({
     e.dataTransfer.effectAllowed = 'move';
   };
 
+  const handleFolderDragStart = (e: React.DragEvent, folder: string) => {
+    e.dataTransfer.setData('text/plain', `folder:${folder}`);
+    e.dataTransfer.effectAllowed = 'move';
+  };
+
   const handleDragOver = (e: React.DragEvent, folder: string) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
@@ -125,11 +130,27 @@ export function GameLibrary({
     setDragOverFolder(null);
   };
 
-  const handleDrop = (e: React.DragEvent, folder: string) => {
+  const handleDrop = (e: React.DragEvent, targetFolder: string) => {
     e.preventDefault();
-    const gameId = e.dataTransfer.getData('text/plain');
-    if (gameId) {
-      onMoveGame(gameId, folder);
+    const data = e.dataTransfer.getData('text/plain');
+    if (data.startsWith('folder:')) {
+      const sourceFolder = data.slice('folder:'.length);
+      // Prevent dropping into itself or a subfolder of itself
+      if (targetFolder === sourceFolder || targetFolder.startsWith(sourceFolder + '/')) {
+        setDragOverFolder(null);
+        return;
+      }
+      const folderName = sourceFolder.split('/').filter(Boolean).pop();
+      if (!folderName) {
+        setDragOverFolder(null);
+        return;
+      }
+      const newPath = targetFolder === '/' ? '/' + folderName : targetFolder + '/' + folderName;
+      if (newPath !== sourceFolder) {
+        onRenameFolder(sourceFolder, newPath);
+      }
+    } else if (data) {
+      onMoveGame(data, targetFolder);
     }
     setDragOverFolder(null);
   };
@@ -289,6 +310,8 @@ export function GameLibrary({
           className={`library-folder ${dragOverFolder === folder ? 'drag-over' : ''}`}
           onClick={() => setCurrentFolder(folder)}
           onContextMenu={(e) => handleFolderContextMenu(e, folder)}
+          draggable={!isMobile}
+          onDragStart={isMobile ? undefined : (e) => handleFolderDragStart(e, folder)}
           onDragOver={isMobile ? undefined : (e) => handleDragOver(e, folder)}
           onDragLeave={isMobile ? undefined : handleDragLeave}
           onDrop={isMobile ? undefined : (e) => handleDrop(e, folder)}
