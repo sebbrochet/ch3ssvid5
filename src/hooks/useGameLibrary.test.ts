@@ -219,6 +219,27 @@ describe('useGameLibrary', () => {
     expect(names).toEqual(['Caro-Kann', 'French Defense', 'Italian Game', 'Sicilian Defense']);
   });
 
+  it('getGamesInFolder uses natural sort for numbered names', async () => {
+    const { result } = await renderLibrary();
+    act(() => {
+      result.current.createGame('Chapter 10 - Averback System', '1. d4 *', { folder: '/' });
+      result.current.createGame('Chapter 2 - Classical 9b4', '1. d4 *', { folder: '/' });
+      result.current.createGame('Chapter 1 - Classical 9.Ne1', '1. d4 *', { folder: '/' });
+      result.current.createGame('Chapter 11 - Makogonov System', '1. d4 *', { folder: '/' });
+      result.current.createGame('Chapter 0 - Introduction', '1. d4 *', { folder: '/' });
+      result.current.createGame('Chapter 12 - London System', '1. d4 *', { folder: '/' });
+    });
+    const names = result.current.getGamesInFolder('/').map((g) => g.name);
+    expect(names).toEqual([
+      'Chapter 0 - Introduction',
+      'Chapter 1 - Classical 9.Ne1',
+      'Chapter 2 - Classical 9b4',
+      'Chapter 10 - Averback System',
+      'Chapter 11 - Makogonov System',
+      'Chapter 12 - London System',
+    ]);
+  });
+
   it('getSubfolders returns immediate subfolders', async () => {
     const { result } = await renderLibrary();
     act(() => {
