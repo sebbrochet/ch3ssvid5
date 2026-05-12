@@ -514,7 +514,7 @@ describe('Export / Import', () => {
     });
 
     // Import in a fresh hook
-    const { result: result2 } = renderHook(() => usePlaylist());
+    const { result: result2 } = await renderPlaylist();
     let imported: ReturnType<typeof result2.current.importPlaylist>;
     act(() => {
       imported = result2.current.importPlaylist(json!, games);

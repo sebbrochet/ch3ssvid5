@@ -163,24 +163,27 @@ export function ChessBoardPanel({
     fenRef.current = fen;
   });
 
-  const handleMove = useCallback((from: Key, to: Key) => {
-    if (!onMoveRef.current) return;
-    const currentFen = fenRef.current;
-    const rules = variantToRules(variant);
-    const pos = fenToPosition(currentFen, rules);
-    if (!pos) return;
+  const handleMove = useCallback(
+    (from: Key, to: Key) => {
+      if (!onMoveRef.current) return;
+      const currentFen = fenRef.current;
+      const rules = variantToRules(variant);
+      const pos = fenToPosition(currentFen, rules);
+      if (!pos) return;
 
-    if (isPromotion(pos, from, to)) {
-      setPendingPromotion({ from, to, color: pos.turn === 'white' ? 'w' : 'b' });
-      return;
-    }
+      if (isPromotion(pos, from, to)) {
+        setPendingPromotion({ from, to, color: pos.turn === 'white' ? 'w' : 'b' });
+        return;
+      }
 
-    const result = applyMove(pos, from, to);
-    if (result) {
-      lastUserMoveRef.current = result.newFen;
-      onMoveRef.current(from, to, result.san, result.newFen);
-    }
-  }, []);
+      const result = applyMove(pos, from, to);
+      if (result) {
+        lastUserMoveRef.current = result.newFen;
+        onMoveRef.current(from, to, result.san, result.newFen);
+      }
+    },
+    [variant],
+  );
 
   const handlePromotionChoice = useCallback(
     (piece: 'q' | 'r' | 'b' | 'n') => {
@@ -201,7 +204,7 @@ export function ChessBoardPanel({
       }
       setPendingPromotion(null);
     },
-    [pendingPromotion],
+    [pendingPromotion, variant],
   );
 
   const cancelPromotion = useCallback(() => {
@@ -331,7 +334,7 @@ export function ChessBoardPanel({
         ],
       },
     });
-  }, [fen, interactive, lastMove, orientation, shapes, engineArrow, nag, nagSquare]);
+  }, [fen, interactive, lastMove, orientation, shapes, engineArrow, nag, nagSquare, variant, posProp, isChess960]);
 
   return (
     <div className="board-panel" data-board-theme={boardTheme || 'brown'}>

@@ -467,7 +467,7 @@ export default function App() {
         setCurrentNodeId(nodeId);
       }
     },
-    [timestamps, isSynced, currentNodeId, setSyncSource, allGames, selectedGameIndex, triggerMoveAnimation],
+    [timestamps, isSynced, currentNodeId, setSyncSource, allGames, selectedGameIndex, triggerMoveAnimation, videoId],
   );
 
   const { handleCaptureRef, handleFlipRef, playlistNextRef, playlistPrevRef } = useKeyboardShortcuts({
@@ -756,7 +756,7 @@ export default function App() {
     if (currentGameId) {
       library.updateGame(currentGameId, { pgn: updatedPgn });
     }
-  }, [allGames, selectedGameIndex, setPgnText, currentGameId, library]);
+  }, [allGames, selectedGameIndex, setPgnText, currentGameId, library, t]);
 
   const handleVideoUrlSubmit = useCallback(() => {
     const id = extractVideoId(videoUrl);
@@ -895,7 +895,7 @@ export default function App() {
         library.updateGame(currentGameId, { pgn: updatedPgn });
       }
     },
-    [gameData, timestamps, selectedGameIndex, setPgnText, currentGameId, library],
+    [gameData, timestamps, selectedGameIndex, setPgnText, currentGameId, library, rebuildPgnWithOverrides],
   );
 
   /** Save user-drawn shapes (arrows + highlights) to the current node */
@@ -922,7 +922,16 @@ export default function App() {
         library.updateGame(currentGameId, { pgn: updatedPgn });
       }
     },
-    [currentNodeId, gameData, timestamps, selectedGameIndex, setPgnText, currentGameId, library],
+    [
+      currentNodeId,
+      gameData,
+      timestamps,
+      selectedGameIndex,
+      setPgnText,
+      currentGameId,
+      library,
+      rebuildPgnWithOverrides,
+    ],
   );
 
   const handleCopyPgn = useCallback(() => {
@@ -1169,7 +1178,7 @@ export default function App() {
     if (urlImport && !isAllowedDomain(urlImport.pgnUrl)) {
       setUrlImportError(t('importUrl.domainNotAllowed'));
     }
-  }, [urlImport]);
+  }, [urlImport, t]);
 
   // Resolve current move's effective timestamp for display
   const currentMoveTimestamp = currentNode

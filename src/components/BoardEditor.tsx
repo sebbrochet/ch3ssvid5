@@ -19,6 +19,32 @@ interface BoardEditorProps {
   onFenChange: (fen: string) => void;
 }
 
+type CastlingFlags = { K: boolean; Q: boolean; k: boolean; q: boolean };
+
+/** Auto-uncheck castling when king/rook is removed/moved */
+function autoCastling(p: Map<Key, Piece>, prev: CastlingFlags): CastlingFlags {
+  const cast = { ...prev };
+  const wk = p.get('e1' as Key);
+  if (!wk || wk.role !== 'king' || wk.color !== 'white') {
+    cast.K = false;
+    cast.Q = false;
+  }
+  const bk = p.get('e8' as Key);
+  if (!bk || bk.role !== 'king' || bk.color !== 'black') {
+    cast.k = false;
+    cast.q = false;
+  }
+  const h1 = p.get('h1' as Key);
+  if (!h1 || h1.role !== 'rook' || h1.color !== 'white') cast.K = false;
+  const a1 = p.get('a1' as Key);
+  if (!a1 || a1.role !== 'rook' || a1.color !== 'white') cast.Q = false;
+  const h8 = p.get('h8' as Key);
+  if (!h8 || h8.role !== 'rook' || h8.color !== 'black') cast.k = false;
+  const a8 = p.get('a8' as Key);
+  if (!a8 || a8.role !== 'rook' || a8.color !== 'black') cast.q = false;
+  return cast;
+}
+
 /** Parse FEN piece placement into a Map<Key, Piece> */
 function fenToPieces(placement: string): Map<Key, Piece> {
   const pieces = new Map<Key, Piece>();
@@ -182,30 +208,6 @@ export function BoardEditor({ fen, onFenChange }: BoardEditorProps) {
     },
     [buildFen, onFenChange],
   );
-
-  // Auto-uncheck castling when king/rook is removed/moved
-  const autoCastling = (p: Map<Key, Piece>, prev: typeof castling) => {
-    const cast = { ...prev };
-    const wk = p.get('e1' as Key);
-    if (!wk || wk.role !== 'king' || wk.color !== 'white') {
-      cast.K = false;
-      cast.Q = false;
-    }
-    const bk = p.get('e8' as Key);
-    if (!bk || bk.role !== 'king' || bk.color !== 'black') {
-      cast.k = false;
-      cast.q = false;
-    }
-    const h1 = p.get('h1' as Key);
-    if (!h1 || h1.role !== 'rook' || h1.color !== 'white') cast.K = false;
-    const a1 = p.get('a1' as Key);
-    if (!a1 || a1.role !== 'rook' || a1.color !== 'white') cast.Q = false;
-    const h8 = p.get('h8' as Key);
-    if (!h8 || h8.role !== 'rook' || h8.color !== 'black') cast.k = false;
-    const a8 = p.get('a8' as Key);
-    if (!a8 || a8.role !== 'rook' || a8.color !== 'black') cast.q = false;
-    return cast;
-  };
 
   // Handle right-click to remove piece
   useEffect(() => {
