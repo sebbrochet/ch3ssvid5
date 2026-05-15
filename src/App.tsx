@@ -1456,17 +1456,30 @@ export default function App() {
                 )}
 
                 <div className="welcome-tutorial">
-                  <h3>{t('welcome.trySample')}</h3>
+                  <h3>
+                    <Trans
+                      i18nKey="welcome.trySample"
+                      components={{
+                        hub: (
+                          <a
+                            href="https://ch3ssvid5hub.sebbrochet.com/"
+                            target="ch3ssvid5hub"
+                            rel="noopener noreferrer"
+                          />
+                        ),
+                      }}
+                    />
+                  </h3>
                   <div className="sample-games">
                     {[
                       {
                         file: 'Bypass Years of Opening Study With This System.pgn',
-                        name: 'Jobava London (Alex Banzea)',
+                        name: 'Jobava London (IM Alex Banzea)',
                         folder: 'Samples',
                       },
                       {
                         file: 'Chapter 1 - Caro-Kann - Advanced 4.c3.pgn',
-                        name: 'Caro-Kann Defense (Chessgeek)',
+                        name: 'Caro-Kann Defense (ChessGeek)',
                         folder: 'Samples',
                       },
                     ].map((s) => {
