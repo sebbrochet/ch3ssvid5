@@ -1,0 +1,135 @@
+.import-playlist-dialog {
+  max-width: 560px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.playlist-url-row {
+  display: flex;
+  gap: 8px;
+}
+
+.playlist-url-row input {
+  flex: 1;
+}
+
+.playlist-progress {
+  font-size: 0.85em;
+  color: var(--text-secondary, #999);
+  padding: 4px 0;
+}
+
+.playlist-meta {
+  margin-bottom: 12px;
+}
+
+.playlist-meta .dialog-field {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.playlist-meta .dialog-field label {
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.playlist-meta .dialog-field span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playlist-editable-name {
+  flex: 1;
+  min-width: 0;
+}
+
+.playlist-video-list {
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color, #444);
+  border-radius: 6px;
+  padding: 6px;
+  margin-bottom: 8px;
+}
+
+.playlist-toggle-all {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 2px;
+  font-weight: 600;
+  font-size: 0.9em;
+  border-bottom: 1px solid var(--border-color, #444);
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.playlist-video-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 2px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.playlist-video-item:hover {
+  background: var(--hover-bg, rgba(255, 255, 255, 0.05));
+  border-radius: 4px;
+}
+
+.playlist-video-item.exists {
+  opacity: 0.5;
+}
+
+.playlist-video-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.playlist-exists-badge {
+  font-size: 0.75em;
+  background: var(--badge-bg, #555);
+  color: var(--badge-text, #ccc);
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 6px;
+}
+
+.playlist-advanced-toggle {
+  background: none;
+  border: none;
+  color: var(--text-secondary, #999);
+  cursor: pointer;
+  padding: 4px 0;
+  font-size: 0.9em;
+}
+
+.playlist-advanced-toggle:hover {
+  color: var(--text-primary, #eee);
+}
+
+.playlist-advanced {
+  padding: 8px 0;
+}
+
+.playlist-retry-btn {
+  display: block;
+  margin-top: 8px;
+  padding: 4px 12px;
+  font-size: 0.85em;
+  cursor: pointer;
+}
+
+.playlist-advanced .dialog-field {
+  margin-bottom: 8px;
+}
+
+.playlist-advanced input[type='number'] {
+  width: 80px;
+}
