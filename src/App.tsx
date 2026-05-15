@@ -40,6 +40,8 @@ import { parseImportParams, fetchPgn, deriveGameName, isAllowedDomain } from './
 import { findDeepestOpening, isOpeningsLoaded } from './utils/openingLookup';
 import { showToast } from './components/Toast';
 import { ImportUrlDialog } from './components/ImportUrlDialog';
+import { ImportPlaylistDialog } from './components/ImportPlaylistDialog';
+import { sanitizeName } from './utils/playlistImport';
 import { NowPlayingBar } from './components/NowPlayingBar';
 import { PlaylistView } from './components/PlaylistView';
 import { PlaylistGamePicker } from './components/PlaylistGamePicker';
@@ -181,6 +183,7 @@ export default function App() {
   });
   const [urlImportLoading, setUrlImportLoading] = useState(false);
   const [urlImportError, setUrlImportError] = useState<string | undefined>();
+  const [showPlaylistImport, setShowPlaylistImport] = useState(false);
 
   // Stockfish engine
   const { info: engineInfo, isReady: engineReady, analyze: engineAnalyze } = useStockfish(engineEnabled);
@@ -1105,7 +1108,7 @@ export default function App() {
   const handleExportPgnFile = useCallback(async () => {
     const currentGameObj = currentGameId ? library.getGame(currentGameId) : undefined;
     const name = currentGameObj?.name || gameData.headers['Event'] || gameData.headers['White'] || 'game';
-    const fileName = `${name}.pgn`;
+    const fileName = `${sanitizeName(name)}.pgn`;
 
     // Try native "Save As" dialog (Chromium browsers)
     if ('showSaveFilePicker' in window) {
@@ -1431,6 +1434,11 @@ export default function App() {
                         <p>{t('welcome.importPgnDesc')}</p>
                         <input type="file" accept=".pgn" onChange={handleImportPgnFile} hidden />
                       </label>
+                    </div>
+                    <div className="welcome-card" onClick={() => setShowPlaylistImport(true)}>
+                      <span className="welcome-icon">📋</span>
+                      <h3>{t('welcome.importPlaylist')}</h3>
+                      <p>{t('welcome.importPlaylistDesc')}</p>
                     </div>
                   </div>
                 )}
@@ -1784,6 +1792,28 @@ export default function App() {
           error={urlImportError}
           onConfirm={handleUrlImportConfirm}
           onCancel={handleUrlImportCancel}
+        />
+      )}
+
+      {showPlaylistImport && (
+        <ImportPlaylistDialog
+          games={library.games}
+          onImport={(imports) => {
+            let imported = 0;
+            for (const item of imports) {
+              const folderParts = item.folder.split('/').filter(Boolean);
+              for (let i = 1; i <= folderParts.length; i++) {
+                library.createFolder('/' + folderParts.slice(0, i).join('/'));
+              }
+              if (!library.findGameByName(item.name, item.folder)) {
+                library.createGame(item.name, item.pgn, { folder: item.folder, videoId: item.videoId });
+                imported++;
+              }
+            }
+            setShowPlaylistImport(false);
+            showToast(t('importPlaylist.success', { imported, total: imports.length }));
+          }}
+          onCancel={() => setShowPlaylistImport(false)}
         />
       )}
 
