@@ -709,7 +709,16 @@ export default function App() {
     (meta: GameMetadata) => {
       // Build a new game PGN block and append to current PGN
       const today = new Date().toISOString().slice(0, 10).replace(/-/g, '.');
-      const videoHeader = meta.videoUrl ? `\n[VideoURL "${meta.videoUrl}"]` : '';
+      // When sameVideo (meta.videoUrl undefined), copy VideoURL and VideoTitle from current game
+      let videoHeader = '';
+      if (meta.videoUrl) {
+        videoHeader = `\n[VideoURL "${meta.videoUrl}"]`;
+      } else if (gameData.headers['VideoURL']) {
+        videoHeader = `\n[VideoURL "${gameData.headers['VideoURL']}"]`;
+        if (gameData.headers['VideoTitle']) {
+          videoHeader += `\n[VideoTitle "${gameData.headers['VideoTitle']}"]`;
+        }
+      }
       const START_FEN_ADD = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
       const fenHeaders = meta.fen && meta.fen !== START_FEN_ADD ? `\n[SetUp "1"]\n[FEN "${meta.fen}"]` : '';
       const variantPgnMap: Record<string, string> = {
@@ -740,7 +749,7 @@ export default function App() {
       }
       setDialogMode(null);
     },
-    [pgnText, setPgnText, allGames.length, currentGameId, library],
+    [pgnText, setPgnText, allGames.length, currentGameId, library, gameData.headers],
   );
 
   const handleDeleteCurrentGame = useCallback(() => {
