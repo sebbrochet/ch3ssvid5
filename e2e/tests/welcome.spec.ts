@@ -36,8 +36,8 @@ test.describe('Welcome Screen — Desktop', () => {
     await app.clearAndGoto();
   });
 
-  test('shows "Start from video" and "Import" cards', async () => {
-    await expect(app.welcomeCards).toHaveCount(2);
+  test('shows "Start from video", "Import" and "Import playlist" cards', async () => {
+    await expect(app.welcomeCards).toHaveCount(3);
   });
 
   test('shows keyboard shortcuts grid', async () => {
