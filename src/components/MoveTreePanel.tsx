@@ -147,10 +147,10 @@ function MoveLine({
             {nag}
           </span>
         ))}
-        {n.eval && <span className={`tree-eval ${evalColor(n.eval)}`}>{formatEval(n.eval)}</span>}
+        {n.eval && <span className={`tree-eval ${evalColor(n.eval)}`}>({formatEval(n.eval)})</span>}
         {showTimestamps && (
           <span className={`tree-ts ${getEffectiveTs(n, timestamps) !== undefined ? '' : 'missing'}`}>
-            {getEffectiveTs(n, timestamps) !== undefined ? formatTimestamp(getEffectiveTs(n, timestamps)!) : '—'}
+            {getEffectiveTs(n, timestamps) !== undefined ? `[${formatTimestamp(getEffectiveTs(n, timestamps)!)}]` : '—'}
           </span>
         )}
       </span>,
